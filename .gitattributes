@@ -1,0 +1,18 @@
+# 源码与脚本一律 LF，避免在 Windows 上被转成 CRLF 后无法在 Linux 使用
+* text=auto eol=lf
+
+*.sh    text eol=lf
+*.patch text eol=lf
+*.S     text eol=lf
+*.c     text eol=lf
+*.h     text eol=lf
+*.sv    text eol=lf
+*.py    text eol=lf
+*.md    text eol=lf
+
+# 二进制
+*.docx binary
+*.pdf  binary
+*.mp4  binary
+*.png  binary
+*.jpg  binary

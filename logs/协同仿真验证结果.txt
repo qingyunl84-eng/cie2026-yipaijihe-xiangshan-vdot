@@ -1,0 +1,64 @@
+第三阶段　协同仿真（difftest）验证结果
+================================================================
+
+以下四轮均为第三阶段运行，均在 NEMU 支持 vdot.vv 之后启用 difftest。
+其中前两轮的测试程序由第二阶段编写，程序文件沿用第二阶段命名，
+仅表示创建时间，不代表本次运行阶段。
+
+----------------------------------------------------------------
+第一轮   vdot 正例（1 个用例）
+----------------------------------------------------------------
+The first instruction of core 0 has commited. Difftest enabled.
+dot result = 492, expected 492
+PASS: vdot.vv positive and upper bits zero
+HIT GOOD TRAP at pc = 0x80000280
+Core-0 instrCnt = 3257, cycleCnt = 19842, IPC = 0.164147
+
+----------------------------------------------------------------
+第二轮   vdot 边界（8 个用例）
+----------------------------------------------------------------
+The first instruction of core 0 has commited. Difftest enabled.
+case zero: result = 0, expected 0
+PASS: zero and upper bits zero
+case zero-left: result = 0, expected 0
+PASS: zero-left and upper bits zero
+case zero-right: result = 0, expected 0
+PASS: zero-right and upper bits zero
+case max-max: result = 129032, expected 129032
+PASS: max-max and upper bits zero
+case min-min: result = 131072, expected 131072
+PASS: min-min and upper bits zero
+case min-max: result = -130048, expected -130048
+PASS: min-max and upper bits zero
+case max-min: result = -130048, expected -130048
+PASS: max-min and upper bits zero
+case cancel: result = 0, expected 0
+PASS: cancel and upper bits zero
+PASS: vdot.vv boundary all cases
+HIT GOOD TRAP at pc = 0x800003e0
+Core-0 instrCnt = 23956, cycleCnt = 78611, IPC = 0.304741
+
+----------------------------------------------------------------
+第三轮   基线组合（5 个用例）
+----------------------------------------------------------------
+The first instruction of core 0 has commited. Difftest enabled.
+PASS [positive]: dot = 360, upper bytes = 0
+PASS [mixed]: dot = -36, upper bytes = 0
+PASS [zero]: dot = 0, upper bytes = 0
+PASS [max_sum]: dot = 131072, upper bytes = 0
+PASS [min_sum]: dot = -130048, upper bytes = 0
+PASS: all 5 baseline cases
+HIT GOOD TRAP at pc = 0x80000322
+Core-0 instrCnt = 10213, cycleCnt = 38451, IPC = 0.265611
+
+----------------------------------------------------------------
+第四轮   双实现一致性（1 个用例）
+----------------------------------------------------------------
+The first instruction of core 0 has commited. Difftest enabled.
+PASS: both implementations produce expected output
+HIT GOOD TRAP at pc = 0x80000594
+Core-0 instrCnt = 22741, cycleCnt = 64199, IPC = 0.354227
+
+================================================================
+四轮均以 Difftest enabled. 开始、以 HIT GOOD TRAP 结束，无失配记录。
+PASS 行的 expected 值为按点积定义手算的常量，非参考模型输出。
